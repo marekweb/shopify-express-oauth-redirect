@@ -1,5 +1,7 @@
 # Shopify OAuth Redirect
 
+![npm](https://img.shields.io/npm/v/shopify-express-oauth-redirect.svg?maxAge=259200) ![travis](https://travis-ci.org/marekweb/shopify-express-oauth-redirect.svg?branch=master) ![node](https://img.shields.io/badge/node-%3E=8.1-blue.svg)
+
 Create a redirect response to Shopify OAuth.
 
 ```js
