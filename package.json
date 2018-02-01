@@ -5,11 +5,11 @@
     "type": "git",
     "url": "https://github.com/marekweb/shopify-express-oauth-redirect"
   },
-  "description": "Plugin for Express which adds a conventient `redirectToShopifyOAuth` method.",
+  "description": "Create a redirect to Shopify OAuth",
   "main": "index.js",
   "scripts": {
-    "test": "tap test.js",
-    "lint": "xo --space"
+    "test": "jest",
+    "format": "prettier --write --single-quote '**/*.js'"
   },
   "author": "Marek Zaluski <marekz@gmail.com>",
   "license": "MIT",
@@ -17,12 +17,7 @@
     "check-options": "^1.1.0"
   },
   "devDependencies": {
-    "bluebird": "^3.5.0",
-    "express": "^4.14.0",
-    "get-port": "^2.1.0",
-    "got": "^6.6.3",
-    "tap": "^8.0.1",
-    "tape": "^4.6.3",
-    "xo": "^0.17.1"
+    "jest": "^22.1.4",
+    "prettier": "^1.10.2"
   }
 }
