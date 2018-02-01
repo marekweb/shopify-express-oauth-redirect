@@ -1,21 +1,17 @@
-'use strict';
-
 const checkOptions = require('check-options');
-const createRedirectUrlFactory = require('./create-redirect-url');
+const createRedirectUrl = require('./create-redirect-url');
 const createRedirectBody = require('./create-redirect-body');
 
-module.exports = {
-    attachToExpressApp: function(app, options) {
-    options = checkOptions(options, ['callbackUrl', 'shopifyApiKey', 'scopes']);
+module.exports = function redirectToShopifyOAuth(options) {
+  options = checkOptions(options, [
+    'shopHostname',
+    'callbackUrl',
+    'shopifyApiKey',
+  ], { scopes: [] });
 
-    const createRedirectUrl = createRedirectUrlFactory(options);
+  // Prepare redirect URL and generate a response body
+  const redirectUrl = createRedirectUrl(options);
+  const redirectBody = createRedirectBody(redirectUrl, options.shopHostname);
 
-    app.response.redirectToShopifyOAuth = function (shopHostname) {
-      const redirectUrl = createRedirectUrl(shopHostname);
-
-      const redirectBody = createRedirectBody(redirectUrl, shopHostname);
-
-      this.send(redirectBody);
-    };
-  }
+  return redirectBody;
 };
