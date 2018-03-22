@@ -5,7 +5,7 @@
 Create a redirect response to Shopify OAuth.
 
 ```js
-const shopifyOauthRedirect = require('shopify-express-oauth-redirect';
+const shopifyOauthRedirect = require('shopify-express-oauth-redirect');
 
 app.get('/auth/shopify', (req, res, next) => {
   if (!req.query.shop) {
@@ -28,6 +28,16 @@ app.get('/auth/shopify', (req, res, next) => {
 `res.redirect` sends a HTTP 302 redirect. This is not enough because when the app is in the Shopify EASDK iframe, the 302 won't escape out of the iframe.
 
 Instead, this technique sends a full response containing javascript which redirects the browser's top frame, or sends a message to the EASDK to trigger the top frame reload.
+
+## Special case using `postMessage` in the EASDK frame
+
+Current versions of Chrome block third-party redirects of the top frame. This means that simply redirecting the location of the top frame no longer works.
+
+This module implements a workaround in the EASDK using a `postMessage` call to the top frame, which then makes the top frame perform the redirect. This solves the problem.
+
+## What does the redirect body look like?
+
+See the body of the response in this file: [create-redirect-body.js](create-redirect-body.js)
 
 ## Reference
 
