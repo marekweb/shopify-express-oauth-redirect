@@ -17,8 +17,8 @@
     "check-options": "^1.1.0"
   },
   "devDependencies": {
-    "jest": "^22.1.4",
-    "prettier": "^1.10.2"
+    "jest": "^22.4.3",
+    "prettier": "^1.12.1"
   },
   "engines": {
     "node": ">=8.1.0"
