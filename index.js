@@ -3,11 +3,11 @@ const createRedirectUrl = require('./create-redirect-url');
 const createRedirectBody = require('./create-redirect-body');
 
 module.exports = function redirectToShopifyOAuth(options) {
-  options = checkOptions(options, [
-    'shopHostname',
-    'callbackUrl',
-    'shopifyApiKey',
-  ], { scopes: [] });
+  options = checkOptions(
+    options,
+    ['shopHostname', 'callbackUrl', 'shopifyApiKey'],
+    { scopes: [] }
+  );
 
   // Prepare redirect URL and generate a response body
   const redirectUrl = createRedirectUrl(options);
