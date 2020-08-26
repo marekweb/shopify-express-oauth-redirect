@@ -50,3 +50,30 @@ shopifyOauthRedirect(options);
   - `shopifyApiKey`: (string) the Shopify API key for OAuth (also known as the Client ID).
   - `scopes`: (string | array) an array of strings or a comma-delimited string which describes the OAuth permission scopes.
   - `shopHostname` (string) The `myshopify.com` hostname of the shop, such as `my-store.myshopify.com`.
+  
+## To make your APP embeedded within Shopify's UI
+
+To show your APP embdedded within the Shopify UI you need to add Shopify's APP Bridge to your `callbackUrl` page.
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My shopify APP</title>
+		<script src="https://unpkg.com/@shopify/app-bridge@^1"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var AppBridge = window["app-bridge"];
+			var createApp = AppBridge.default;
+			var app = createApp({
+				apiKey: "your apiKey",
+				shopOrigin: "the shopOrigin",
+			});
+
+		</script>
+	</body>
+</html>
+```
